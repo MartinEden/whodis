@@ -2,8 +2,10 @@ plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.2.70'
 }
 
+apply plugin: 'application'
 group 'me.edens'
 version '1.0-SNAPSHOT'
+mainClassName = "me.edens.whodis.AppKt"
 
 repositories {
     mavenCentral()

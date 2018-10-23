@@ -12,7 +12,7 @@ rm -r /opt/whodis || true
 apt-get install -qq -y openjdk-8-jre nmap espeak unzip
 wget -O whodis.zip ${URL}
 unzip whodis.zip -d /opt/whodis
-ln -s /opt/whodis/whodis /usr/bin/whodis
+ln -s /opt/whodis/whodis-${VERSION}/bin/whodis /usr/bin/whodis
 mkdir -p /etc/whodis
 
 # Add as service

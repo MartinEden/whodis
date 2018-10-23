@@ -17,7 +17,7 @@ class MacAddressFinder(private val checkFrequency: Duration = Duration.ofSeconds
         if (timeSinceLastRefresh > checkFrequency) {
             triggerRefresh()
         }
-        val rawARP = "arp -a".runCommand()
+        val rawARP = listOf("arp", "-a").runCommand()
         return rawARP
                 .split("\n")
                 .mapNotNull { arpRegex.find(it) }
@@ -27,7 +27,7 @@ class MacAddressFinder(private val checkFrequency: Duration = Duration.ofSeconds
 
     private fun triggerRefresh() {
         println("Refreshing ARP cache...")
-        "nmap -n -sP 192.168.1.0/24".runCommandInBackground()
+        listOf("nmap", "-n", "-sP", "192.168.1.0/24").runCommandInBackground()
         lastRefreshed = Instant.now()
     }
 }

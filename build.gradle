@@ -4,7 +4,7 @@ plugins {
 apply plugin: 'application'
 
 group 'me.edens'
-version '1.0.0'
+version '1.0.1'
 mainClassName = "me.edens.whodis.AppKt"
 
 repositories {

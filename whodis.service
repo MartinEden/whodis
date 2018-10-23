@@ -9,4 +9,4 @@ WantedBy=multi-user.target
 
 [Service]
 Type=simple
-ExecStart=whodis
+ExecStart=/usr/bin/whodis

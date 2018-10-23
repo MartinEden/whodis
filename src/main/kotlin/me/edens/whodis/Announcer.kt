@@ -5,6 +5,8 @@ class Announcer {
         when (host) {
             is HostDescription.Known -> if (host.announce) {
                 say("${host.name} has arrived")
+            } else {
+                println("Configured not to announce ${host.name}")
             }
             is HostDescription.Unknown -> {
                 println("Need to add this host to the lookup: ${host.address}")

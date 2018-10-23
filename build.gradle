@@ -1,23 +1,10 @@
-buildscript {
-    repositories {
-        mavenLocal()
-        maven {
-            url = "http://jcenter.bintray.com"
-        }
-    }
-    dependencies {
-        classpath 'se.transmode.gradle:gradle-docker:1.2'
-    }
-}
-
 plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.2.70'
 }
 apply plugin: 'application'
-apply plugin: 'docker'
 
 group 'me.edens'
-version '1.0-SNAPSHOT'
+version '1.0.0'
 mainClassName = "me.edens.whodis.AppKt"
 
 repositories {
@@ -34,8 +21,4 @@ compileKotlin {
 }
 compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
-}
-
-distDocker {
-    dockerfile = 'Dockerfile'
 }

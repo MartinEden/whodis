@@ -9,7 +9,7 @@ rm /usr/bin/whodis || true
 rm -r /opt/whodis || true
 
 # Install app
-apt-get install -qq -y openjdk-8-jre nmap espeak unzip
+apt-get install -qq -y openjdk-8-jre nmap espeak unzip net-tools
 wget -O whodis.zip ${URL}
 unzip whodis.zip -d /opt/whodis
 ln -s /opt/whodis/whodis-${VERSION}/bin/whodis /usr/bin/whodis

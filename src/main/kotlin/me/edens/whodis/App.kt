@@ -1,8 +1,6 @@
 package me.edens.whodis
 
 import java.lang.Thread.sleep
-import java.time.Duration
-import java.time.Instant
 
 fun main() {
     val config = Config.load()

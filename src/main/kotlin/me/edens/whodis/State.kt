@@ -5,7 +5,7 @@ import java.time.Instant
 
 data class HostState(val lastSeen: Instant, val description: HostDescription?)
 
-class State(val data: Map<String, HostState> = emptyMap()) {
+class State(private val data: Map<String, HostState> = emptyMap()) {
 
     fun update(latestAddresses: Set<String>, config: Config, announcer: Announcer): State {
         var data = data
@@ -15,11 +15,11 @@ class State(val data: Map<String, HostState> = emptyMap()) {
             if (address !in data) {
                 announcer.announce(host)
             }
-            data += (address to HostState(now, host))
+            data = data + (address to HostState(now, host))
         }
         for ((address, hostState) in data) {
             if (Duration.between(hostState.lastSeen, now) > Duration.ofMinutes(30)) {
-                data -= address
+                data = data - address
                 println("Haven't seen ${hostState.description} in a while")
             }
         }

@@ -4,9 +4,9 @@ import java.time.Duration
 import java.time.Instant
 
 class MacAddressFinder(private val checkFrequency: Duration = Duration.ofSeconds(20)) {
-    private val ipAddressRegex = (1..4).map { """[\d]+""" }.joinToString(".")
+    private val ipAddressRegex = (1..4).joinToString(".") { """[\d]+""" }
     private val macAddressPartRegex = "[a-f0-9]{2}"
-    private val macAddressRegex = (1..6).map { macAddressPartRegex }.joinToString(":")
+    private val macAddressRegex = (1..6).joinToString(":") { macAddressPartRegex }
     private val arpRegex = Regex("""^[^ ]+ \($ipAddressRegex\) at (?<macAddress>$macAddressRegex)""")
 
     private var lastRefreshed: Instant = Instant.EPOCH

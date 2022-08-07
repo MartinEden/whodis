@@ -2,7 +2,6 @@ package me.edens.whodis
 
 import com.google.gson.GsonBuilder
 import java.io.File
-import kotlin.system.exitProcess
 
 
 sealed class HostDescription {

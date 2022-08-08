@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -ex
 
-VERSION=1.0.2
+VERSION=1.0.3
 URL=https://github.com/MartinEden/whodis/releases/download/v${VERSION}/whodis-${VERSION}.zip
 
 # Clean up any previous install
@@ -16,10 +16,10 @@ ln -s /opt/whodis/whodis-${VERSION}/bin/whodis /usr/bin/whodis
 mkdir -p /etc/whodis
 
 # Add as service
-mv /opt/whodis/whodis-${VERSION}/whodis.service /etc/systemd/system/whodis.service
-systemctl enable whodis
-systemctl start whodis
+mv /opt/whodis/whodis-${VERSION}/whodis.service /etc/systemd/user/whodis.service
+systemctl enable --user whodis
 
 set +x
-echo "Installed and started whodis as systemd service"
-echo "Control with systemctl [start|stop|status] whodis"
+echo "Installed whodis as systemd service"
+echo "Control with systemctl [start|stop|status] --user whodis"
+echo "Right now run: systemctl start --user whodis"

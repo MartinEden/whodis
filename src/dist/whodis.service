@@ -1,11 +1,11 @@
 [Unit]
-Description=Monitors devices on your local network and announces them creepily
+Description=whodis
 Documentation=https://github.com/MartinEden/whodis
 Wants=network-online.target
 After=network-online.target
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
 
 [Service]
 Type=simple

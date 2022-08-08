@@ -57,6 +57,7 @@ Clone the repo and then run `./gradlew :run`. You will need a JDK already instal
 ## Troubleshooting
 * Make sure sound is enabled (see below)
 * Make sure that the host is connected to the WiFi if you want to announce WiFi devices
+* Check `journalctl -user-unit whodis -e`
 
 ### Enabling sound on Ubuntu server
 Instructions from [here](http://howto.blbosti.com/2010/03/ubuntu-server-install-alsa-sound-and-moc-music-on-console/):

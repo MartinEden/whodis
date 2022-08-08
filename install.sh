@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -ex
 
-VERSION=1.0.1
+VERSION=1.0.2
 URL=https://github.com/MartinEden/whodis/releases/download/v${VERSION}/whodis-${VERSION}.zip
 
 # Clean up any previous install
@@ -16,7 +16,7 @@ ln -s /opt/whodis/whodis-${VERSION}/bin/whodis /usr/bin/whodis
 mkdir -p /etc/whodis
 
 # Add as service
-cp whodis.service /etc/systemd/system/whodis.service
+mv /opt/whodis/whodis-${VERSION}/whodis.service /etc/systemd/system/whodis.service
 systemctl enable whodis
 systemctl start whodis
 

@@ -17,6 +17,7 @@ class HostsConfig(data: List<HostDescription.Known>) {
             return if (configFile.exists()) {
                 val text = configFile.readText()
                 val data = serializer.fromJson(text, Array<HostDescription.Known>::class.java).toList()
+                println("Loaded ${data.size} host entries from ${configFile.absolutePath}")
                 HostsConfig(data)
             } else {
                 print(missingFileMessage)

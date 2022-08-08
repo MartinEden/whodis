@@ -14,11 +14,12 @@ data class Settings(
         fun load(): Settings {
             val settings = if (configFile.exists()) {
                 val text = configFile.readText()
+                println("Loaded settings from ${configFile.absolutePath}")
                 serializer.fromJson(text, Settings::class.java)
             } else {
+                println("No settings file found at ${configFile.absolutePath}. Using defaults")
                 Settings()
             }
-            println("Loaded settings: $settings")
             return settings
         }
     }

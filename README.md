@@ -10,8 +10,8 @@ The idea is that you can leave this running and (if you live on a hill like I do
 friends are approaching your house their devices will automatically pick up your WiFi and whodis will tell you that 
 they are approaching, so you can get the kettle on.
 
-If a device has been disconnected for 30 minutes it will announce them again next time they reconnect. (This number 
-should probably be configurable, but it isn't).
+If a device has been disconnected for 10 minutes it will announce them again next time they reconnect (you can 
+override this default in the settings file; see below).
 
 ## Install it
 Clone the repository and then run `./install.sh`.
@@ -35,6 +35,20 @@ For devices that you are not interested in announcing (such as your printer), yo
 `announce` to false. Devices that do not have an entry in the hosts file will be announced as "Unknown device" to 
 remind you to add them to the hosts file. You will need to restart the service (`systemctl restart whodis`) for 
 changes to this file to take effect.
+
+## Settings
+Create a JSON file at `/etc/whodis/settings` to override the default settings.
+
+Here is a sample settings file showing the default values. All settings are optional (as is the settings file itself).
+
+    {
+        "timeoutInSeconds": 600,
+        "checkFrequencyInSeconds": 20
+    }
+
+|`timeoutInSeconds`|If a device has not been seen on the network for this long it will be forgotten, and 
+re-announced next time it connects|
+|`checkFrequencyInSeconds`|How often the service should poll for ARP data to discover hosts|
 
 ## Run it from source
 Clone the repo and then run `./gradlew :run`. You will need a JDK already installed.

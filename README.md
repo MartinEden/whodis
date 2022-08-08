@@ -1,8 +1,7 @@
 # whodis
 Monitor local network for devices and announce them creepily
 
-## Install
-Download and run `./install.sh`.
+Clone the repository and then run `./install.sh`.
 
 ## Running from source
 Clone the repo and then run `./gradlew :run`. You will need a JDK already installed.

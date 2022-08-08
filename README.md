@@ -39,16 +39,17 @@ changes to this file to take effect.
 ## Settings
 Create a JSON file at `/etc/whodis/settings` to override the default settings.
 
+| Setting key               |   Default value   | Meaning                                                                                                                 |
+|---------------------------|:-----------------:|-------------------------------------------------------------------------------------------------------------------------|
+| `timeoutInSeconds`        | 600s (10 minutes) | If a device has not been seen on the network for this long it will be forgotten, and re-announced next time it connects |
+| `checkFrequencyInSeconds` |        20s        | How often the service should poll for ARP data to discover hosts                                                        |
+
 Here is a sample settings file showing the default values. All settings are optional (as is the settings file itself).
 
     {
         "timeoutInSeconds": 600,
         "checkFrequencyInSeconds": 20
     }
-
-|`timeoutInSeconds`|If a device has not been seen on the network for this long it will be forgotten, and 
-re-announced next time it connects|
-|`checkFrequencyInSeconds`|How often the service should poll for ARP data to discover hosts|
 
 ## Run it from source
 Clone the repo and then run `./gradlew :run`. You will need a JDK already installed.

@@ -7,11 +7,11 @@ data class HostState(val lastSeen: Instant, val description: HostDescription?)
 
 class State(private val data: Map<String, HostState> = emptyMap()) {
 
-    fun update(latestAddresses: Set<String>, config: Config, announcer: Announcer): State {
+    fun update(latestAddresses: Set<String>, hostsConfig: HostsConfig, announcer: Announcer): State {
         var data = data
         val now = Instant.now()
         for (address in latestAddresses) {
-            val host = config.get(address)
+            val host = hostsConfig.get(address)
             if (address !in data) {
                 announcer.announce(host)
             }

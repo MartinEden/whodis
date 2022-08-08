@@ -3,7 +3,7 @@ package me.edens.whodis
 import java.time.Duration
 import java.time.Instant
 
-class MacAddressFinder(private val checkFrequency: Duration = Duration.ofSeconds(20)) {
+class MacAddressFinder(private val checkFrequency: Duration) {
     private val ipAddressRegex = (1..4).joinToString(".") { """[\d]+""" }
     private val macAddressPartRegex = "[a-f0-9]{2}"
     private val macAddressRegex = (1..6).joinToString(":") { macAddressPartRegex }

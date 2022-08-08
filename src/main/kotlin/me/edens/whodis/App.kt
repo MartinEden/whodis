@@ -1,15 +1,17 @@
 package me.edens.whodis
 
 import java.lang.Thread.sleep
+import java.time.Duration
 
 fun main() {
-    val config = Config.load()
-    val finder = MacAddressFinder()
+    val settings = Settings.load()
+    val hostsConfig = HostsConfig.load()
+    val finder = MacAddressFinder(checkFrequency = Duration.ofSeconds(settings.checkFrequencyInSeconds))
     val announcer = Announcer()
-    var state = State()
+    var state = State(settings, hostsConfig)
     while (true) {
         val latestAddresses = finder.getMacAddresses()
-        state = state.update(latestAddresses, config, announcer)
+        state = state.update(latestAddresses, announcer)
         sleep(1000)
     }
 }

@@ -37,7 +37,7 @@ For devices that you are not interested in announcing (such as your printer), yo
 
 Devices that do not have an entry in the hosts file will be announced as "Unknown device" to 
 remind you to add them to the hosts file. You can see the associated MAC addresses by viewing the service log using 
-`journalctl -user-unit whodis -e`.  
+`journalctl --user-unit whodis -e`.  
 
 You will need to restart the service (`systemctl restart whodis`) for 
 changes to this file to take effect.

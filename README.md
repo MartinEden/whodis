@@ -14,7 +14,8 @@ If a device has been disconnected for 10 minutes it will announce them again nex
 override this default in the settings file; see below).
 
 ## Install it
-Clone the repository and then run `./install.sh`.
+Clone the repository and then run `./install.sh`. You should run it using your ordinary user account. (i.e. do not 
+run as root.)
 
 It uses a JSON file at `/etc/whodis/hosts` to match up MAC addresses with names. The format is:
 
@@ -32,8 +33,13 @@ It uses a JSON file at `/etc/whodis/hosts` to match up MAC addresses with names.
     ]
 
 For devices that you are not interested in announcing (such as your printer), you can create an entry and set 
-`announce` to false. Devices that do not have an entry in the hosts file will be announced as "Unknown device" to 
-remind you to add them to the hosts file. You will need to restart the service (`systemctl restart whodis`) for 
+`announce` to false. 
+
+Devices that do not have an entry in the hosts file will be announced as "Unknown device" to 
+remind you to add them to the hosts file. You can see the associated MAC addresses by viewing the service log using 
+`journalctl -user-unit whodis -e`.  
+
+You will need to restart the service (`systemctl restart whodis`) for 
 changes to this file to take effect.
 
 ## Settings
